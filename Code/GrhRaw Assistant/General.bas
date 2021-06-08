@@ -62,6 +62,47 @@ Dim i As Long
   
 End Sub
 
+Public Sub LoadOldMolde()
+Dim FileNum As Byte
+Dim ln As String
+Dim s() As String
+Dim i As Long
+
+    'Clear the old list
+    frmMain.OldGrhLst.Clear
+
+    'Open the GrhRaw file
+    FileNum = FreeFile
+    Open DataPath & "Molde.ini" For Input As #FileNum
+    
+        'Loop through the whole file
+        Do While Not EOF(FileNum)
+    
+            'Get the line
+            Line Input #FileNum, ln
+            
+            'Check if it is a Grh line
+            If UCase$(Left$(ln, 3)) = "GRH" Then
+            
+                'Grab the file number
+                s() = Split(ln, "-")
+                If Val(Right$(s(0), 1)) = 1 Then
+                    If Val(s(1)) = FileNumber Then
+                    
+                        'Write the line
+                        frmMain.OldGrhLst.AddItem ln
+    
+                    End If
+                End If
+                
+            End If
+            
+        Loop
+        
+    Close #FileNum
+  
+End Sub
+
 Public Sub RefreshImage(Optional ByVal MakeNew As Boolean = True)
 Dim Index As Long
 Dim b(0 To 2) As Byte
@@ -151,7 +192,7 @@ Const Add As Single = (255 - (255 * Alpha))
     
     'Draw the selected new grh entry
     If frmMain.GrhLst.List(frmMain.GrhLst.ListIndex) <> "-removed-" Then
-        If frmMain.GrhLst.ListIndex > -1 Then DrawSelectedGrh frmMain.GrhLst.List(frmMain.GrhLst.ListIndex), vbGreen
+        If frmMain.GrhLst.ListIndex > -1 Then DrawSelectedGrh frmMain.GrhLst.List(frmMain.GrhLst.ListIndex), vbBlue
         If frmMain.OldGrhLst.ListIndex > -1 Then DrawSelectedGrh frmMain.OldGrhLst.List(frmMain.OldGrhLst.ListIndex), vbRed
     End If
     LastGrhLstIndex = frmMain.GrhLst.ListIndex

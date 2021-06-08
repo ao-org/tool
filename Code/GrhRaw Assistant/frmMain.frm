@@ -11,6 +11,200 @@ Begin VB.Form frmMain
    LinkTopic       =   "Form1"
    ScaleHeight     =   15105
    ScaleWidth      =   23505
+   Begin VB.Frame Frame6 
+      Caption         =   "Molde Body y NPCs"
+      Height          =   3855
+      Left            =   18960
+      TabIndex        =   44
+      Top             =   5400
+      Width           =   4455
+      Begin VB.TextBox txtMolde 
+         Height          =   375
+         Left            =   2880
+         TabIndex        =   64
+         Text            =   "1"
+         Top             =   3000
+         Width           =   855
+      End
+      Begin VB.CommandButton cmdGuardarMolde 
+         Caption         =   "Guardar Molde"
+         Height          =   360
+         Left            =   2520
+         TabIndex        =   63
+         Top             =   1560
+         Width           =   1575
+      End
+      Begin VB.CommandButton cmdBuscarMolde 
+         Caption         =   "Buscar Molde"
+         Height          =   360
+         Left            =   2520
+         TabIndex        =   62
+         Top             =   960
+         Width           =   1575
+      End
+      Begin VB.CommandButton cmdRecargarMoldes 
+         Caption         =   "Cargar Moldes"
+         Height          =   360
+         Left            =   2520
+         TabIndex        =   61
+         Top             =   360
+         Width           =   1575
+      End
+      Begin VB.TextBox txtY 
+         Height          =   285
+         Left            =   960
+         TabIndex        =   60
+         Text            =   "0"
+         Top             =   600
+         Width           =   615
+      End
+      Begin VB.TextBox txtX 
+         Height          =   285
+         Left            =   960
+         TabIndex        =   59
+         Text            =   "0"
+         Top             =   240
+         Width           =   615
+      End
+      Begin VB.TextBox txtDir4 
+         Height          =   375
+         Left            =   960
+         TabIndex        =   50
+         Text            =   "5"
+         Top             =   3360
+         Width           =   375
+      End
+      Begin VB.TextBox txtDir3Text1 
+         Height          =   375
+         Left            =   960
+         TabIndex        =   49
+         Text            =   "5"
+         Top             =   2880
+         Width           =   375
+      End
+      Begin VB.TextBox txtDir2 
+         Height          =   375
+         Left            =   960
+         TabIndex        =   48
+         Text            =   "6"
+         Top             =   2400
+         Width           =   375
+      End
+      Begin VB.TextBox txtDir1 
+         Height          =   375
+         Left            =   960
+         TabIndex        =   47
+         Text            =   "6"
+         Top             =   1920
+         Width           =   375
+      End
+      Begin VB.TextBox TxtAlto 
+         Height          =   375
+         Left            =   960
+         TabIndex        =   46
+         Text            =   "47"
+         Top             =   1440
+         Width           =   735
+      End
+      Begin VB.TextBox TxtAncho 
+         Height          =   375
+         Left            =   960
+         TabIndex        =   45
+         Text            =   "27"
+         Top             =   960
+         Width           =   735
+      End
+      Begin VB.Label lblMoldeN 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Molde Nº:"
+         Height          =   195
+         Left            =   2040
+         TabIndex        =   65
+         Top             =   3120
+         Width           =   705
+      End
+      Begin VB.Label lblY 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Y"
+         Height          =   195
+         Left            =   600
+         TabIndex        =   58
+         Top             =   600
+         Width           =   105
+      End
+      Begin VB.Label lblX 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "X"
+         Height          =   195
+         Left            =   600
+         TabIndex        =   57
+         Top             =   240
+         Width           =   105
+      End
+      Begin VB.Label lblDir4 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Dir4"
+         Height          =   195
+         Left            =   480
+         TabIndex        =   56
+         Top             =   3480
+         Width           =   285
+      End
+      Begin VB.Label lblDir3 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Dir3"
+         Height          =   195
+         Left            =   480
+         TabIndex        =   55
+         Top             =   3000
+         Width           =   285
+      End
+      Begin VB.Label lblDir2 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Dir2"
+         Height          =   195
+         Left            =   480
+         TabIndex        =   54
+         Top             =   2520
+         Width           =   285
+      End
+      Begin VB.Label lblDir1 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Dir1"
+         Height          =   195
+         Left            =   480
+         TabIndex        =   53
+         Top             =   2040
+         Width           =   285
+      End
+      Begin VB.Label lblAlto 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Alto"
+         Height          =   195
+         Left            =   480
+         TabIndex        =   52
+         Top             =   1560
+         Width           =   270
+      End
+      Begin VB.Label LblAncho 
+         AutoSize        =   -1  'True
+         BackStyle       =   0  'Transparent
+         Caption         =   "Ancho"
+         Height          =   195
+         Left            =   360
+         TabIndex        =   51
+         Top             =   1080
+         Width           =   465
+      End
+   End
    Begin VB.Frame FraHerramientas 
       BackColor       =   &H8000000B&
       Caption         =   "Herramientas"
@@ -440,8 +634,8 @@ Begin VB.Form frmMain
       Width           =   15615
    End
    Begin MSComDlg.CommonDialog CD 
-      Left            =   -240
-      Top             =   -240
+      Left            =   120
+      Top             =   6600
       _ExtentX        =   847
       _ExtentY        =   847
       _Version        =   393216
@@ -537,6 +731,17 @@ End Sub
 
 Private Sub cmdRecargarGRHs_Click()
     Call LoadOldGrhs
+End Sub
+
+Private Sub cmdRecargarMoldes_Click()
+
+    GridWidthTxt.Text = TxtAncho.Text
+    GridHeightTxt.Text = TxtAlto.Text
+    ColumnsTxt.Text = txtDir1.Text
+    RowsTxt.Text = "4"
+    
+    StartXTxt.Text = txtX.Text
+    StartYTxt.Text = txtY.Text
 End Sub
 
 Private Sub cmdResetGrilla_Click()
